@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package gateway;
+option go_package = "pkg/gatewaypb";
+
+message ConnectRequest {
+    string host = 1;
+    int32 localPort = 2;
+    string environment = 3;
+}
+
+message ConnectResponse {
+    bool hasConnected = 1;
+    string status = 2;
+    string error = 3;
+}
+
+message DisconnectRequest {} 
+
+message DisconnectResponse {    
+    string status = 1;
+    string error = 2;
+}
+
+message StatusRequest {}
+
+message StatusResponse {
+    string status = 1;
+}
+
+service ProxyService {
+    rpc Connect(ConnectRequest) returns (ConnectResponse) {}
+    rpc Disconnect(DisconnectRequest) returns (DisconnectResponse) {}
+    rpc Status(StatusRequest) returns (StatusResponse) {}
+
+}
+
+message PreLoadRequest {
+}
+
+message PreLoadResponse {
+    ConnectRequest connectRequest = 1;
+    string status = 2;
+    repeated string env = 3;
+    
+}
+
+message HostsRequest {
+    string env = 1;
+}
+
+message HostsResponse {
+    repeated string hosts = 1;
+}
+
+service PreLoadService {
+    rpc PreLoad(PreLoadRequest) returns (PreLoadResponse) {}
+    rpc GetHosts(HostsRequest) returns (HostsResponse) {}
+}

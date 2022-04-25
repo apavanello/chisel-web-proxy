@@ -1,0 +1,18 @@
+#docker run --rm -it jpillora/chisel
+version: '3.1'
+
+services:
+
+  chisel:
+    image: jpillora/chisel
+    container_name: chisel
+    ports:
+      - "8080:8080"
+    command: server --port 8080
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
