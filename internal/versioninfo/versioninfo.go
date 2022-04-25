@@ -10,7 +10,7 @@ var ProjectDescription string = "chiselwebproxy"
 var ProjectCopyright string = ""
 
 // Version contains the version of the app
-var Version string = "1.0.0"
+var Version string = "1.1.0"
 
 // Revision will be injected with the current commit hash
 var Revision string = "head"
