@@ -11,12 +11,16 @@ import (
 )
 
 var connStats bool = false
-var forceDisconnect bool = false
+
+// var forceDisconnect bool = false
 var connSettings struct {
 	Environment string
 	Host        string
 	LocalPort   int32
 }
+
+//var ctx2 = context.Background()
+var ctx2, cancel = context.WithCancel(context.Background())
 
 func (s *Server) Connect(ctx context.Context, in *pb.ConnectRequest) (*pb.ConnectResponse, error) {
 	fmt.Println("ConnectService")
@@ -57,33 +61,11 @@ func (s *Server) Connect(ctx context.Context, in *pb.ConnectRequest) (*pb.Connec
 		return nil, err
 	}
 
-	ctx2 := context.Background()
-	ctx2, cancel := context.WithCancel(ctx2)
-
 	connStats = true
 	err = cli.Start(ctx2)
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	go func() {
-		for connStats {
-			//time.Sleep(1 * time.Second)
-			if forceDisconnect {
-				fmt.Println("Force Disconnect")
-				cancel()
-				if err != nil {
-					fmt.Println(err)
-				}
-
-				<-ctx2.Done()
-				forceDisconnect = false
-				connStats = false
-				fmt.Println("Disconnected")
-			}
-		}
-
-	}()
 
 	connSettings.Environment = in.GetEnvironment()
 	connSettings.Host = in.GetHost()
@@ -108,7 +90,11 @@ func (s *Server) Disconnect(ctx context.Context, in *pb.DisconnectRequest) (*pb.
 		}, nil
 	}
 
-	forceDisconnect = true
+	fmt.Println("Force Disconnect")
+	cancel()
+	<-ctx2.Done()
+	connStats = false
+	fmt.Println("Disconnected")
 
 	return &pb.DisconnectResponse{
 		Status: "Disconnected",
