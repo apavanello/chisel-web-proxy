@@ -25,8 +25,8 @@ var ctx2, cancel = context.WithCancel(context.Background())
 func (s *Server) Connect(ctx context.Context, in *pb.ConnectRequest) (*pb.ConnectResponse, error) {
 	fmt.Println("ConnectService")
 
-	remote, cSrv := dataset.GetConnString(in.Environment, in.Host)
-	fmt.Println("remote:", remote, "cSrv:", cSrv, "localPort:", in.LocalPort)
+	remote, cSrv, proxy := dataset.GetConnString(in.Environment, in.Host)
+	fmt.Println("remote:", remote, "cSrv:", cSrv, "localPort:", in.LocalPort, "proxy:", proxy)
 
 	if in.Environment == "" || in.Host == "" {
 		return &pb.ConnectResponse{
@@ -54,6 +54,7 @@ func (s *Server) Connect(ctx context.Context, in *pb.ConnectRequest) (*pb.Connec
 		Remotes:          []string{proxyStr},
 		MaxRetryCount:    3,
 		MaxRetryInterval: time.Second * 1,
+		Proxy:            proxy,
 	}
 
 	cli, err := chisel.NewClient(&c)

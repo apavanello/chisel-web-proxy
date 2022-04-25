@@ -24,6 +24,7 @@ type Connection struct {
 	Env          string `json:"env"`
 	ChiselServer string `json:"chiselServer"`
 	Value        string `json:"value"`
+	Proxy        string `json:"proxy"`
 }
 
 var dbs Data
@@ -83,18 +84,22 @@ func GetHosts(env string) map[string]bool {
 	return hosts
 }
 
-func GetConnString(env string, host string) (remote string, cSRV string) {
+func GetConnString(env string, host string) (remote string, cSRV string, proxy string) {
 
 	for _, server := range dbs.Servers {
 		for _, conn := range server.Connections {
 			fmt.Println(env, host)
 			if conn.Env == env && server.Name == host {
 				fmt.Println("found env:", env, "host:", host)
-				return conn.Value, conn.ChiselServer
+				if conn.Proxy != "" {
+					return conn.Value, conn.ChiselServer, conn.Proxy
+				} else {
+					return conn.Value, conn.ChiselServer, ""
+				}
 			}
 		}
 	}
-	return "", ""
+	return "", "", ""
 }
 
 func datasetFileCheck(datasetFile string) {
