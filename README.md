@@ -12,7 +12,7 @@ Uma interface web para facilitar a interação com o chisel-cliet para a abertui
 
 ## TL;DR
 ``` docker 
-docker container run --rm --name web-proxy -p 80:8080 -p 8081:8081 -p 9000:9000 --mount type=bind,src=$(pwd)/data,dst=/data web-chisel-proxy:v1.0.3 data/dataset.json
+docker container run --rm --name web-proxy -d -p 80:8080 -p 8081:8081 -p 9000:9000 --mount type=bind,src=$(pwd)/data,dst=/data apavanello/chisel-web-proxy data/dataset.json
 ```
 
 ## variaveis no docker
@@ -27,11 +27,11 @@ O backend necessita de um arquivo json com os dados dos hosts remotos para serem
 
 ## Comando Docker
 ``` docker
-docker container run --rm --name web-proxy -p <web-port>:8080 -p <tunnel-port>:8081 -p <grpc-port>:9000 --mount type=bind,src=<dataset/folder>,dst=/data web-chisel-proxy:v1.0.3 data/dataset.json
+docker container run --rm --name web-proxy -p <web-port>:8080 -p <tunnel-port>:8081 -p <grpc-port>:9000 --mount type=bind,src=<dataset/folder>,dst=/data apavanello/chisel-web-proxy data/dataset.json
 ```
 
 ## Exemplo de Dataset
-Um exemplo de dataset.json pode set visualizado no [Dataset.json](./examples/dataset.json)
+Um exemplo de dataset.json pode ser visualizado no [Dataset.json](./examples/dataset.json)
 
 # Extras:
 A Aplicação VUE.js se encontra na pasta [pkg/frontend](./pkg/frontend)

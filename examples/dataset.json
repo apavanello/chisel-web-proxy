@@ -6,7 +6,8 @@
                 {
                     "env": "Dev",
                     "chiselServer": "172.17.0.18:8080",
-                    "value": "dev.mongo1.com:27017"
+                    "value": "dev.mongo1.com:27017",
+                    "proxy": "http://myproxy.mycompany.com:8080"
                 },
                 {
                     "env": "PRD",
@@ -36,7 +37,8 @@
                 {
                     "env": "Dev",
                     "chiselServer": "192.168.20.15:8090",
-                    "value": "dev.redis.com:6379"
+                    "value": "dev.redis.com:6379",
+                    "proxy": "http://myproxy-dev.mycompany.com:8080"
                 }
             ]
         }
