@@ -38,5 +38,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: apavanello/chisel-web-proxy:${{ env.RELEASE_VERSION }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
