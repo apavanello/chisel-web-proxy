@@ -7,7 +7,7 @@
             <div class="column is-4 is-offset-4">
                 <div class="box">
                     <h1 class="title">
-                        Connect
+                        Chisel Web Proxy
                     </h1>
                         <div class="field">
                             <label class="label">Select environment:</label>
@@ -58,6 +58,18 @@
             </div>
         </div>
       </div>
+      <footer>
+        <div class="container">
+           <div class="content has-text-centered">
+            <p>
+              <strong>Chisel Web Proxy</strong> by Apavanello.
+            </p>
+            <p>
+              <a href="https://github.com/apavanello/chisel-web-proxy">Github</a>
+            </p>
+          </div>
+        </div>
+        </footer>
     </div>
 </template>
 
@@ -80,6 +92,8 @@ export default{
             disabled: "0",
             host: '',
             environment: '',
+            Benvironment: '',
+            Bhost: '',
         }
     },
   mounted: 
@@ -121,7 +135,8 @@ export default{
 
         } catch (err) {
             console.error(err.message)
-            this.message = err + " -- Check in Console"
+            this.message = err + " -> Check in Console maybe server is Offline";
+            this.disabled = "1";
             throw err
             
         }
