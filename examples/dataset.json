@@ -1,0 +1,44 @@
+{
+    "Servers": [
+        {
+            "name": "MongoDB-1",
+            "connections": [
+                {
+                    "env": "Dev",
+                    "chiselServer": "172.17.0.18:8080",
+                    "value": "dev.mongo1.com:27017"
+                },
+                {
+                    "env": "PRD",
+                    "chiselServer": "10.1.0.20:8080",
+                    "value": "mongo2.com:27017"
+                }
+            ]
+        },
+        {
+            "name": "MongoDB-2",
+            "connections": [
+                {
+                    "env": "Dev",
+                    "chiselServer": "172.17.0.18:8080",
+                    "value": "dev.mongo2.com:27017"
+                },
+                {
+                    "env": "PRD",
+                    "chiselServer": "10.1.0.20:8080",
+                    "value": "mongo2.com:27017"
+                }
+            ]
+        },
+        {
+            "name": "Redis",
+            "connections": [
+                {
+                    "env": "Dev",
+                    "chiselServer": "192.168.20.15:8090",
+                    "value": "dev.redis.com:6379"
+                }
+            ]
+        }
+    ]
+}
