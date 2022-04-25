@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "mongo-proxy-backend | build",
+            "label": "chisel-web-proxy-proxy-backend | build",
             "command": "go-james build -v",
             "type": "shell",
             "group": "build",
@@ -11,7 +11,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | build darwin/amd64",
+            "label": "chisel-web-proxy-proxy-backend | build darwin/amd64",
             "command": "go-james build -v --goos=darwin --goarch=amd64",
             "type": "shell",
             "group": "build",
@@ -20,7 +20,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | build linux/amd64",
+            "label": "chisel-web-proxy-proxy-backend | build linux/amd64",
             "command": "go-james build -v --goos=linux --goarch=amd64",
             "type": "shell",
             "group": "build",
@@ -29,7 +29,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | build windows/amd64",
+            "label": "chisel-web-proxy-proxy-backend | build windows/amd64",
             "command": "go-james build -v --goos=windows --goarch=amd64",
             "type": "shell",
             "group": "build",
@@ -38,7 +38,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | clean",
+            "label": "chisel-web-proxy-proxy-backend | clean",
             "command": "go-james clean",
             "type": "shell",
             "group": "build",
@@ -47,7 +47,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | tests",
+            "label": "chisel-web-proxy-proxy-backend | tests",
             "command": "go-james test",
             "type": "shell",
             "group": "build",
@@ -56,7 +56,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | run",
+            "label": "chisel-web-proxy-proxy-backend | run",
             "command": "go-james run",
             "type": "shell",
             "group": "build",
@@ -65,7 +65,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | staticcheck",
+            "label": "chisel-web-proxy-proxy-backend | staticcheck",
             "command": "go-james staticcheck",
             "type": "shell",
             "group": "build",
@@ -74,7 +74,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | docker-image",
+            "label": "chisel-web-proxy-proxy-backend | docker-image",
             "command": "go-james docker-image",
             "type": "shell",
             "group": "build",
@@ -83,7 +83,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | install",
+            "label": "chisel-web-proxy-proxy-backend | install",
             "command": "go-james install",
             "type": "shell",
             "group": "build",
@@ -92,7 +92,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | uninstall",
+            "label": "chisel-web-proxy-proxy-backend | uninstall",
             "command": "go-james uninstall",
             "type": "shell",
             "group": "build",
@@ -101,7 +101,7 @@
             ]
         },
         {
-            "label": "mongo-proxy-backend | run (debug)",
+            "label": "chisel-web-proxy-proxy-backend | run (debug)",
             "command": "DEBUG=1 go-james run",
             "type": "shell",
             "group": "build",

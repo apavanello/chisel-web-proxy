@@ -1,4 +1,4 @@
-# mongo-proxy
+# chisel-web-proxy-proxy
 
 ## Project setup
 ```
