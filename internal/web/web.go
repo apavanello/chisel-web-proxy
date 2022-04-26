@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"chiselwebproxy/internal/remoteprocedurecall"
+	"chisel-web-proxy/internal/remoteprocedurecall"
 )
 
 func Start(httpPort string, rpcServer *remoteprocedurecall.RpcServer) {

@@ -2,10 +2,10 @@
 
 FROM golang as go-build-stage
 
-WORKDIR /go/chiselwebproxy
+WORKDIR /go/chisel-web-proxy
 
 RUN apt update -y && apt install -y protobuf-compiler
-ADD go.mod go.sum /go/chiselwebproxy/
+ADD go.mod go.sum /go/chisel-web-proxy/
 
 ADD proto proto
 RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest \
@@ -14,8 +14,8 @@ RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest \
 
 RUN go mod download
 
-COPY cmd /go/chiselwebproxy/cmd
-COPY internal /go/chiselwebproxy/internal
+COPY cmd /go/chisel-web-proxy/cmd
+COPY internal /go/chisel-web-proxy/internal
 
 ENV GOPATH=/go PATH=$GOPATH/bin:$PATH GO111MODULE=on GOOS=linux GOARCH=amd64 CGO_ENABLED=on
 

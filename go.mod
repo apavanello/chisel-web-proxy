@@ -1,4 +1,4 @@
-module chiselwebproxy
+module chisel-web-proxy
 
 go 1.17
 

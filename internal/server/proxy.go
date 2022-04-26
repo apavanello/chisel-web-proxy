@@ -1,8 +1,8 @@
 package server
 
 import (
-	"chiselwebproxy/internal/dataset"
-	pb "chiselwebproxy/pkg/gatewaypb"
+	"chisel-web-proxy/internal/dataset"
+	pb "chisel-web-proxy/pkg/gatewaypb"
 	"context"
 	"fmt"
 	"time"

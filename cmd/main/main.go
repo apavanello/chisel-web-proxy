@@ -1,13 +1,13 @@
 package main
 
 import (
-	"chiselwebproxy/internal/web"
+	"chisel-web-proxy/internal/web"
 	"fmt"
 
-	ds "chiselwebproxy/internal/dataset"
-	"chiselwebproxy/internal/remoteprocedurecall"
-	s "chiselwebproxy/internal/server"
-	"chiselwebproxy/internal/versioninfo"
+	ds "chisel-web-proxy/internal/dataset"
+	"chisel-web-proxy/internal/remoteprocedurecall"
+	s "chisel-web-proxy/internal/server"
+	"chisel-web-proxy/internal/versioninfo"
 )
 
 func main() {
