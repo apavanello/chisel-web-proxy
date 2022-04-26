@@ -12,19 +12,19 @@ import (
 
 var connStats bool = false
 
-// var forceDisconnect bool = false
 var connSettings struct {
 	Environment string
 	Host        string
 	LocalPort   int32
 }
 
-//var ctx2 = context.Background()
-var ctx2, cancel = context.WithCancel(context.Background())
+var ctx2 context.Context
+var cancel context.CancelFunc
 
 func (s *Server) Connect(ctx context.Context, in *pb.ConnectRequest) (*pb.ConnectResponse, error) {
 	fmt.Println("ConnectService")
 
+	ctx2, cancel = context.WithCancel(context.Background())
 	remote, cSrv, proxy := dataset.GetConnString(in.Environment, in.Host)
 	fmt.Println("remote:", remote, "cSrv:", cSrv, "localPort:", in.LocalPort, "proxy:", proxy)
 
@@ -46,8 +46,6 @@ func (s *Server) Connect(ctx context.Context, in *pb.ConnectRequest) (*pb.Connec
 
 	proxyStr := fmt.Sprintf("%d:%s", in.LocalPort, remote)
 
-	fmt.Println("proxyStr:", proxyStr)
-
 	// Connect to Chisel
 	c := chisel.Config{
 		Server:           cSrv,
@@ -62,6 +60,8 @@ func (s *Server) Connect(ctx context.Context, in *pb.ConnectRequest) (*pb.Connec
 		return nil, err
 	}
 
+	cli.Debug = true
+
 	connStats = true
 	err = cli.Start(ctx2)
 	if err != nil {
@@ -72,7 +72,7 @@ func (s *Server) Connect(ctx context.Context, in *pb.ConnectRequest) (*pb.Connec
 	connSettings.Host = in.GetHost()
 	connSettings.LocalPort = in.GetLocalPort()
 
-	fmt.Printf("Connected \n Environment: %s \n Host: %s:%v", connSettings.Environment, connSettings.Host, connSettings.LocalPort)
+	fmt.Printf("Connected")
 
 	return &pb.ConnectResponse{
 		HasConnected: true,

@@ -12,14 +12,14 @@ Uma interface web para facilitar a interação com o chisel-cliet para a abertui
 
 ## TL;DR
 ``` docker 
-docker container run --rm --name web-proxy -d -p 80:8080 -p 8081:8081 -p 9000:9000 --mount type=bind,src=$(pwd)/data,dst=/data apavanello/chisel-web-proxy data/dataset.json
+docker container run --rm --name web-proxy -d -p 8080:8080 -p 8090:8090 -p 9000:9000 --mount type=bind,src=$(pwd)/data,dst=/data apavanello/chisel-web-proxy data/dataset.json
 ```
 
 ## variaveis no docker
 ### Portas
 O proxy necessita de 3 portas para funcionar sendo elas:
 - 8080: porta para a pagina de frontend (vuejs) `web-port`
-- 8081: porta para o tunel local (podendo ser modificada no frontend) `tunnel-port`
+- 8090: porta para o tunel local (podendo ser modificada no frontend) `tunnel-port`
 - 9000: porta para o gRPC-WEB no backend `grpc-port`
 
 ### Dataset
@@ -27,7 +27,7 @@ O backend necessita de um arquivo json com os dados dos hosts remotos para serem
 
 ## Comando Docker
 ``` docker
-docker container run --rm --name web-proxy -p <web-port>:8080 -p <tunnel-port>:8081 -p <grpc-port>:9000 --mount type=bind,src=<dataset/folder>,dst=/data apavanello/chisel-web-proxy data/dataset.json
+docker container run --rm --name web-proxy -p <web-port>:8080 -p <tunnel-port>:8090 -p <grpc-port>:9000 --mount type=bind,src=<dataset/folder>,dst=/data apavanello/chisel-web-proxy data/dataset.json
 ```
 
 ## Exemplo de Dataset

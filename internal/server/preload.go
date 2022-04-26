@@ -30,7 +30,6 @@ func (s *Server) PreLoad(ctx context.Context, in *pb.PreLoadRequest) (*pb.PreLoa
 			Env: envs,
 		}, nil
 	}
-	fmt.Println(envs)
 	return &pb.PreLoadResponse{
 		Status: "Disconnected",
 		Env:    envs,
@@ -42,8 +41,6 @@ func (s *Server) GetHosts(ctx context.Context, in *pb.HostsRequest) (*pb.HostsRe
 
 	data := dataset.GetHosts(in.Env)
 	var hosts []string
-
-	fmt.Println("data:", data)
 
 	for k := range data {
 		if k != "" {
