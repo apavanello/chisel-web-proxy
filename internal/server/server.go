@@ -1,7 +1,7 @@
 package server
 
 import (
-	pb "chiselwebproxy/pkg/gatewaypb"
+	pb "chisel-web-proxy/pkg/gatewaypb"
 
 	"google.golang.org/grpc"
 )
