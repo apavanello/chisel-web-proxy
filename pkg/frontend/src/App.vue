@@ -31,10 +31,10 @@
                                  </select>
                             </div>
                         </div>
-                        <div class="field">
+                        <div class="field"  hidden>
                             <label class="label">Local Port</label>
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="input" v-model="port" placeholder="8081" :disabled="disabled == 1">
+                                <input class="input" type="input" v-model="port" placeholder="8090" :disabled="disabled == 1">
                             </div>
                         </div>
                         <div class="field">
@@ -84,7 +84,7 @@ export default{
     data() {
         return {
             hosts: '',
-            port: '',
+            port: '8090',
             message: '',
             environments: '',
             myValue: '',
@@ -115,7 +115,7 @@ export default{
                 console.log(data.connectrequest)
 
                     this.host = data.connectrequest.host;
-                    this.port = data.connectrequest.localport
+                //    this.port = data.connectrequest.localport
                     this.environment = data.connectrequest.environment;
                     this.disabled = "1";
                     this.message = "Already connected to " + data.connectrequest.environment + " - " + data.connectrequest.host;
