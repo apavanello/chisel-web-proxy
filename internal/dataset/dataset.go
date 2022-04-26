@@ -3,7 +3,6 @@ package dataset
 import (
 	"encoding/json"
 	"flag"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -88,9 +87,7 @@ func GetConnString(env string, host string) (remote string, cSRV string, proxy s
 
 	for _, server := range dbs.Servers {
 		for _, conn := range server.Connections {
-			fmt.Println(env, host)
 			if conn.Env == env && server.Name == host {
-				fmt.Println("found env:", env, "host:", host)
 				if conn.Proxy != "" {
 					return conn.Value, conn.ChiselServer, conn.Proxy
 				} else {
